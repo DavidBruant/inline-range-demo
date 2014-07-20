@@ -126,10 +126,8 @@
                 var mouseDownXPosition;
                 var valueAtMouseDown;
                 
-                function mousemoveListener(e){
-                    console.log(e.pageX - mouseDownXPosition);
-                    
-                    currentValue = valueAtMouseDown - Math.round((mouseDownXPosition - e.pageX)/20);
+                function mousemoveListener(e){                    
+                    currentValue = valueAtMouseDown - Math.round((mouseDownXPosition - e.pageX)/25);
                     span.textContent = currentValue;
                 }
                 
