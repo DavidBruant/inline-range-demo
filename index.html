@@ -127,7 +127,6 @@
                 var valueAtMouseDown;
                 
                 function mousemoveListener(e){
-                    //e.preventDefault();
                     console.log(e.pageX - mouseDownXPosition);
                     
                     currentValue = valueAtMouseDown - Math.round((mouseDownXPosition - e.pageX)/20);
@@ -143,9 +142,10 @@
                     valueAtMouseDown = currentValue;
                     
                     // the mouseup listener should arguably be set on the entire document
-                    div._on('mouseup', function(e){
+                    div._once('mouseup', function mouseUpListener(e){
                         div.classList.remove('dragging');
                         div._off('mousemove', mousemoveListener);
+                        
                         // reset values
                         valueAtMouseDown = undefined;
                         mouseDownXPosition = undefined;
